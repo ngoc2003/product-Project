@@ -1,0 +1,43 @@
+$fontPrimary:'Open Sans', sans-serif;
+$fontColor:#3A3A1F;
+$fontColorOpacity:rgba(0,0,0,0.5);
+$foreGround: #3A3A1F;
+$border--grey:.1rem solid #808080;
+$border--black:.1rem solid $fontColor;
+@keyframes arrowAni {
+    0%{
+        transform: translateX(0)
+    }
+    40%{
+        transform:translateX(2rem);
+    }
+    41%{
+        transform:translateX(-2rem);
+    }
+    60%{
+        transform:translateX(-2rem);
+    }
+    100%{
+        transform:translateX(0);
+    }
+}
+@keyframes foreGroundAni{
+    0%{
+        transform: translate(0 ,-100%);
+        // opacity: 0;
+    }
+    1%{
+        transform: translate(0 ,100%);
+
+    }
+    
+    100%{
+        transform:translate(0,0);
+        // opacity: 1;
+    }
+}
+@mixin transition($time) {
+    transition: $time ease-out
+}
+
+// $transition($time):$time ease-out;

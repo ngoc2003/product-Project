@@ -1,0 +1,327 @@
+@-webkit-keyframes arrowAni {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  40% {
+    -webkit-transform: translateX(2rem);
+            transform: translateX(2rem);
+  }
+  41% {
+    -webkit-transform: translateX(-2rem);
+            transform: translateX(-2rem);
+  }
+  60% {
+    -webkit-transform: translateX(-2rem);
+            transform: translateX(-2rem);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes arrowAni {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  40% {
+    -webkit-transform: translateX(2rem);
+            transform: translateX(2rem);
+  }
+  41% {
+    -webkit-transform: translateX(-2rem);
+            transform: translateX(-2rem);
+  }
+  60% {
+    -webkit-transform: translateX(-2rem);
+            transform: translateX(-2rem);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes foreGroundAni {
+  0% {
+    -webkit-transform: translate(0, -100%);
+            transform: translate(0, -100%);
+  }
+  1% {
+    -webkit-transform: translate(0, 100%);
+            transform: translate(0, 100%);
+  }
+  100% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+
+@keyframes foreGroundAni {
+  0% {
+    -webkit-transform: translate(0, -100%);
+            transform: translate(0, -100%);
+  }
+  1% {
+    -webkit-transform: translate(0, 100%);
+            transform: translate(0, 100%);
+  }
+  100% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+
+img {
+  width: 100%;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-decoration: none;
+  color: #3A3A1F;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  min-height: 150vh;
+  position: relative;
+}
+
+.btn {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding: .8rem 1.4rem;
+  border-radius: 2rem;
+  border: 0.1rem solid #3A3A1F;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.btn .btn__content {
+  text-transform: uppercase;
+  padding-right: .2rem;
+}
+
+.btn .btn__animate1 {
+  position: absolute;
+  inset: 0;
+  background-color: #3A3A1F;
+  z-index: 1002;
+  -webkit-transform: translate(0, -100%);
+          transform: translate(0, -100%);
+  -webkit-transition: .2s linear;
+  transition: .2s linear;
+}
+
+.btn .btn__animate2 {
+  opacity: 0;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  position: absolute;
+  -webkit-transition: .2s linear;
+  transition: .2s linear;
+  inset: 0;
+  padding: .8rem 1.4rem;
+  z-index: 1003;
+}
+
+.btn .btn__animate2 span {
+  color: #fff;
+}
+
+.btn .btn__animate2 span a {
+  color: #fff;
+}
+
+.btn .btn__animate2 span polyline {
+  stroke: white !important;
+}
+
+.btn:hover .arrow svg {
+  -webkit-animation: arrowAni .4s linear;
+          animation: arrowAni .4s linear;
+}
+
+.btn:hover .btn__animate1 {
+  -webkit-animation: foreGroundAni .2s linear forwards;
+          animation: foreGroundAni .2s linear forwards;
+}
+
+.btn:hover .btn__animate2 {
+  opacity: 1;
+}
+
+.arrow {
+  overflow: hidden;
+  display: block;
+}
+
+.arrow svg {
+  overflow: hidden;
+  -webkit-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
+}
+
+.arrow:hover svg {
+  -webkit-animation: arrowAni .4s linear;
+          animation: arrowAni .4s linear;
+}
+
+nav.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+nav.navbar .line {
+  border-bottom: 0.1rem solid #808080;
+}
+
+.navbar .nav-list {
+  padding: 2.5rem 2.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  -webkit-transition: 0.3s ease-out;
+  transition: 0.3s ease-out;
+}
+
+.nav-item {
+  list-style-type: none;
+  text-transform: uppercase;
+  width: calc(100% / 7);
+  letter-spacing: .05rem;
+  font-weight: 600;
+}
+
+.nav-item span {
+  position: relative;
+  padding-bottom: .5rem;
+}
+
+.nav-item span::before {
+  display: block;
+  content: '';
+  width: 0;
+  height: .1rem;
+  background-color: #3A3A1F;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
+}
+
+.nav-item span:hover::before {
+  width: 100%;
+}
+
+.nav-item span.selected::before {
+  width: 100%;
+}
+
+.logo {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transition: 0.3s ease-out;
+  transition: 0.3s ease-out;
+}
+
+.logo a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.logo a p {
+  font-size: 1.3rem;
+  line-height: 1;
+  padding-left: .5rem;
+  font-weight: 500;
+}
+
+.logo a img {
+  height: 2.6rem;
+  width: 2.5rem;
+}
+
+.containers {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[7];
+      grid-template-columns: repeat(7, 1fr);
+  gap: 2.4rem;
+  padding: 0 2.5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: 1000;
+}
+
+.containers .layer {
+  z-index: 999;
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.containers .sidebar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 2.3rem 0;
+  padding-right: 2.5rem;
+  border-right: 0.1rem solid #3A3A1F;
+  z-index: 1001;
+}
+
+.containers .sidebar .nav-list {
+  padding-top: 4rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.containers .sidebar .nav-list .nav-item {
+  text-transform: capitalize;
+  cursor: pointer;
+  font-size: 1.5rem;
+  min-height: 4rem;
+}
+
+.containers .sidebar .nav-list .nav-item span a {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.containers .sidebar .nav-list .nav-item span.selected a {
+  color: #3A3A1F;
+}
+/*# sourceMappingURL=style.css.map */
