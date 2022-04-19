@@ -10,13 +10,16 @@ window.onscroll = function() {
     }
 }
 
+var containers = document.querySelector('.containers');
 var navBarNavigations = document.querySelectorAll('.navbar .nav-item span');
-navBarNavigations.forEach( navi => {
+navBarNavigations.forEach( (navi, index) => {
     navi.addEventListener('click', () => {
         navBarNavigations.forEach( navi2 => { 
             navi2.classList.remove('selected');
         })
         navi.classList.add('selected');
+        containers.classList.add('show');
+        sideBarNavigations[index].classList.add('selected')
     })
 })
 
@@ -29,6 +32,9 @@ sideBarNavigations.forEach( navi => {
         navi.classList.add('selected');
     })
 })
+
+
+
 
 
 

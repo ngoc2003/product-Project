@@ -1,9 +1,11 @@
 $fontPrimary:'Open Sans', sans-serif;
 $fontColor:#3A3A1F;
-$fontColorOpacity:rgba(0,0,0,0.5);
+$fontColorOpacity:#80808042;
 $foreGround: #3A3A1F;
-$border--grey:.1rem solid #808080;
+$border--grey:.1rem solid $fontColorOpacity;
 $border--black:.1rem solid $fontColor;
+$products--title:8.8rem;
+$product-tite-size: 2rem;
 @keyframes arrowAni {
     0%{
         transform: translateX(0)
