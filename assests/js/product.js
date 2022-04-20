@@ -15,3 +15,10 @@ function productMenuList(btn) {
         btn.lastElementChild.style.transform = 'rotate(0)';
     }
 }
+
+var windowHeight = window.innerHeight;
+var productsDes = document.querySelector('.products-des');
+window.onscroll = function () {
+    let scrollValue = window.scrollY;
+    productsDes.style.transform = `translateY(${scrollValue}px)`;
+}
