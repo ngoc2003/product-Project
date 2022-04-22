@@ -1,7 +1,7 @@
 $fontPrimary:'Open Sans', sans-serif;
 $fontColor:#3A3A1F;
 $fontColorOpacity:grey;
-$foreGround: #3A3A1F;
+$foreGround: $fontColor;
 $border--grey:.1rem solid $fontColorOpacity;
 $border--black:.1rem solid $fontColor;
 $products--title:8.8rem;

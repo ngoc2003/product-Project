@@ -283,31 +283,30 @@ nav.navbar .line {
   display: grid;
   -ms-grid-columns: (1fr)[7];
       grid-template-columns: repeat(7, 1fr);
-  gap: 2.4rem;
-  padding: 0 2.5rem;
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: #fff;
-  z-index: 1000;
   -webkit-transition: 0.3s ease-out;
   transition: 0.3s ease-out;
-  -webkit-transition-delay: .5s;
-          transition-delay: .5s;
-}
-
-.modal.show {
-  -webkit-transform: translateX(0);
-          transform: translateX(0);
 }
 
 .modal .layer {
-  z-index: 999;
   position: absolute;
   inset: 0;
-  background-color: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  background-color: #000;
+  -webkit-transition: 0.3s ease-out;
+  transition: 0.3s ease-out;
+}
+
+.modal.show {
+  z-index: 1000;
+}
+
+.modal.show .layer {
+  opacity: 0.3;
 }
 
 .modal .sidebar {
@@ -318,10 +317,13 @@ nav.navbar .line {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 2.3rem 0;
+  padding: 2.3rem 2.5rem;
   padding-right: 2.5rem;
   border-right: 0.1rem solid #3A3A1F;
-  z-index: 1001;
+  z-index: 1005;
+  background-color: #fff;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
 }
 
 .modal .sidebar .nav-list {
@@ -348,9 +350,45 @@ nav.navbar .line {
 
 .modal .modal-element {
   grid-column: span 2;
-  padding: 2.3rem 0;
-  padding-right: 2.5rem;
+  padding: 2.3rem 2.5rem;
   border-right: 0.1rem solid #3A3A1F;
+  background-color: #fff;
+  -webkit-transition: 1s ease-out;
+  transition: 1s ease-out;
+}
+
+.modal .modal-element.active {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+.modal .modal-element:nth-child(3) {
+  z-index: 1004;
+  -webkit-transform: translateX(-200%);
+          transform: translateX(-200%);
+}
+
+.modal .modal-element:nth-child(4) {
+  z-index: 1003;
+  -webkit-transform: translateX(-300%);
+          transform: translateX(-300%);
+}
+
+.modal .modal-element:nth-child(5) {
+  z-index: 1002;
+  -webkit-transform: translateX(-400%);
+          transform: translateX(-400%);
+}
+
+.modal .modal-element:nth-child(3), .modal .modal-element:nth-child(4), .modal .modal-element:nth-child(5) {
+  opacity: 0;
+}
+
+.modal .modal-element .modal__navi * {
+  -webkit-transition: 0.5s ease-out;
+  transition: 0.5s ease-out;
+  font-weight: 600;
 }
 
 .modal .modal-element .modal__navi li {
@@ -379,6 +417,10 @@ nav.navbar .line {
           justify-content: space-between;
 }
 
+.modal .modal-element .modal__navi li a .modal__navi__des {
+  padding-right: 6rem;
+}
+
 .modal .modal-element .modal__navi li a div .modal__navi-item__title {
   font-weight: inherit;
   color: grey;
@@ -397,8 +439,6 @@ nav.navbar .line {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-transition: 0.25s ease-out;
-  transition: 0.25s ease-out;
 }
 
 .modal .modal-element .modal__navi li a div .arrow polyline {
@@ -408,6 +448,12 @@ nav.navbar .line {
 .modal .modal-element .modal__navi li a div h4.title {
   color: grey;
   padding-top: 2rem;
+  font-size: 1rem;
+}
+
+.modal .modal-element .modal__navi li a div p.description {
+  font-size: 1.2rem;
+  color: grey;
 }
 
 .modal .modal-element .modal__navi li:not(:first-child) {
@@ -437,6 +483,10 @@ nav.navbar .line {
   color: #3A3A1F;
 }
 
+.modal .modal-element .modal__navi li:hover h4.title, .modal .modal-element .modal__navi li:hover p.description, .modal .modal-element .modal__navi li:hover h4.modal__navi-item__title {
+  color: #3A3A1F;
+}
+
 .modal .modal-element header {
   padding-top: 6.5rem;
   padding-bottom: 6rem;
@@ -446,6 +496,50 @@ nav.navbar .line {
   font-size: 2rem;
   color: #3A3A1F;
   text-transform: capitalize;
+}
+
+.modal .modal-element:last-child {
+  border-right: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.modal .modal-element:last-child > div {
+  overflow: hidden;
+}
+
+.modal .modal-element:last-child img {
+  width: 100%;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.modal .modal-element:last-child .modal__title {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.modal .modal-element:last-child p.description {
+  color: grey;
+  padding: 3rem 0;
+  font-size: 1.1rem;
+}
+
+.modal .modal-element:last-child .modal__btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 #products {

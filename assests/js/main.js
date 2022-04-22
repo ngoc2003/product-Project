@@ -44,10 +44,11 @@ window.onscroll = function () {
 
 
 /* 
-                    NAVBAR
+                    NAVBAR AND SIDEBAR
 */
 let defaultPadding = document.querySelector('.nav-list').style.padding;
 var modal = document.querySelector('.modal');
+var modalElements = document.querySelectorAll('.modal-element');
 var navBarNavigations = document.querySelectorAll('.navbar .nav-item span');
 navBarNavigations.forEach( (navi, index) => {
     navi.addEventListener('click', () => {
@@ -55,7 +56,10 @@ navBarNavigations.forEach( (navi, index) => {
             navi2.classList.remove('selected');
         })
         navi.classList.add('selected');
-        modal.classList.add('show');
+        if (index == 1 || index ==2 || index==0) {
+            modal.classList.add('show');
+            modalElements[0].classList.add('active');
+        }
         sideBarNavigations[index].classList.add('selected')
     })
 })
