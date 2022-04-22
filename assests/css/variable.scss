@@ -1,6 +1,6 @@
 $fontPrimary:'Open Sans', sans-serif;
 $fontColor:#3A3A1F;
-$fontColorOpacity:#808080a2;
+$fontColorOpacity:grey;
 $foreGround: #3A3A1F;
 $border--grey:.1rem solid $fontColorOpacity;
 $border--black:.1rem solid $fontColor;
@@ -10,15 +10,15 @@ $product-tite-size: 2rem;
     0%{
         transform: translateX(0)
     }
-    40%{
-        transform:translateX(2rem);
+    50%{
+        transform:translateX(4rem);
     }
-    41%{
-        transform:translateX(-2rem);
+    51%{
+        transform:translateX(-4rem);
     }
-    60%{
-        transform:translateX(-2rem);
-    }
+    // 60%{
+    //     transform:translateX(-2rem);
+    // }
     100%{
         transform:translateX(0);
     }
@@ -30,12 +30,10 @@ $product-tite-size: 2rem;
     }
     1%{
         transform: translate(0 ,100%);
-
     }
     
     100%{
         transform:translate(0,0);
-        // opacity: 1;
     }
 }
 @mixin transition($time) {

@@ -3,17 +3,13 @@
     -webkit-transform: translateX(0);
             transform: translateX(0);
   }
-  40% {
-    -webkit-transform: translateX(2rem);
-            transform: translateX(2rem);
+  50% {
+    -webkit-transform: translateX(4rem);
+            transform: translateX(4rem);
   }
-  41% {
-    -webkit-transform: translateX(-2rem);
-            transform: translateX(-2rem);
-  }
-  60% {
-    -webkit-transform: translateX(-2rem);
-            transform: translateX(-2rem);
+  51% {
+    -webkit-transform: translateX(-4rem);
+            transform: translateX(-4rem);
   }
   100% {
     -webkit-transform: translateX(0);
@@ -26,17 +22,13 @@
     -webkit-transform: translateX(0);
             transform: translateX(0);
   }
-  40% {
-    -webkit-transform: translateX(2rem);
-            transform: translateX(2rem);
+  50% {
+    -webkit-transform: translateX(4rem);
+            transform: translateX(4rem);
   }
-  41% {
-    -webkit-transform: translateX(-2rem);
-            transform: translateX(-2rem);
-  }
-  60% {
-    -webkit-transform: translateX(-2rem);
-            transform: translateX(-2rem);
+  51% {
+    -webkit-transform: translateX(-4rem);
+            transform: translateX(-4rem);
   }
   100% {
     -webkit-transform: translateX(0);

@@ -168,9 +168,9 @@ nav.navbar{
     @include transition(.3s)
 }
 
-.containers{
+.modal{
     display: grid;
-    display: none;
+    // display: none;
     grid-template-columns: repeat(7,1fr);
     gap:2.4rem;
     padding:0 2.5rem;
@@ -180,8 +180,9 @@ nav.navbar{
     bottom:0;
     right:0;
     background-color: #fff;
-    z-index:1000;
-    transform: translateX(-100%);
+    z-index:1000 ;
+    // z-index: 9999;
+    // transform: translateX(-100%);
     @include transition(.3s);
     transition-delay: .5s;
     &.show{
@@ -218,8 +219,88 @@ nav.navbar{
                     }
                 }    
             }
+        }  
+    }
+    .modal-element{
+        grid-column: span 2;
+        padding:2.3rem 0;
+        padding-right:2.5rem;
+        border-right: $border--black;
+        .modal__navi {
+            li{
+                list-style-type:none;
+                border-bottom: $border--grey;
+                border-top: $border--grey;
+                padding:1rem 0;
+                font-size:1.5rem;
+                @include transition(.25s);
+                // cursor: pointer;
+                a{
+                    display: block;
+                    color: $fontColorOpacity;
+                    @include transition(.25s);
+                    > div {
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                    div{
+                        .modal__navi-item__title{
+                            font-weight: inherit;
+                            color: $fontColorOpacity
+                        }
+                        .arrow{
+                            border-radius: 2rem;
+                            padding:0 1rem;
+                            border: $border--grey;
+                            // background-color: $foreGround;
+                            display: flex;
+                            align-items: center;
+                            justify-content:center ;
+                            polyline{
+                                stroke: $fontColorOpacity;
+                            }
+                            @include transition(.25s);
+                        }
+                        h4.title{
+                            color: $fontColorOpacity;
+                            padding-top:2rem;
+                            
+                        }
+                    }
+                }
+                &:not(:first-child) {
+                    margin-top:-.1rem
+                }
+                &:hover{
+                    border-top: $border--black;
+                    border-bottom:$border--black;
+                    color: $fontColor;
+                    .arrow{
+                        background-color: $foreGround;
+                        border: none;
+                        polyline{
+                            stroke: #fff !important;
+                        }
+
+                    }
+                    & + li{
+                    border-top: $border--black;
+                    };
+                    a{
+                        color: $fontColor;
+                    }
+                }
+            }
         }
-        
+        header{
+            padding-top:6.5rem;
+            padding-bottom:6rem;
+            .modal__title{
+                font-size: 2rem;
+                color: $fontColor;
+                text-transform: capitalize;
+            }
+        }
     }
 }
 #products{

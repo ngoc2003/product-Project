@@ -47,7 +47,7 @@ window.onscroll = function () {
                     NAVBAR
 */
 let defaultPadding = document.querySelector('.nav-list').style.padding;
-var containers = document.querySelector('.containers');
+var modal = document.querySelector('.modal');
 var navBarNavigations = document.querySelectorAll('.navbar .nav-item span');
 navBarNavigations.forEach( (navi, index) => {
     navi.addEventListener('click', () => {
@@ -55,12 +55,12 @@ navBarNavigations.forEach( (navi, index) => {
             navi2.classList.remove('selected');
         })
         navi.classList.add('selected');
-        containers.classList.add('show');
+        modal.classList.add('show');
         sideBarNavigations[index].classList.add('selected')
     })
 })
 
-var sideBarNavigations = document.querySelectorAll('.containers .nav-item span');
+var sideBarNavigations = document.querySelectorAll('.modal .nav-item span');
 sideBarNavigations.forEach( navi => {
     navi.addEventListener('click', () => {
         sideBarNavigations.forEach( navi2 => { 
