@@ -178,8 +178,8 @@ body {
 
 .arrow svg {
   overflow: hidden;
-  -webkit-transition: 0.2s ease-out;
-  transition: 0.2s ease-out;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 .arrow:hover svg {
@@ -209,8 +209,8 @@ nav.navbar .line {
       -ms-flex-align: center;
           align-items: center;
   cursor: pointer;
-  -webkit-transition: 0.3s ease-out;
-  transition: 0.3s ease-out;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
 .nav-item {
@@ -236,8 +236,8 @@ nav.navbar .line {
   left: 0;
   bottom: 0;
   cursor: pointer;
-  -webkit-transition: 0.2s ease-out;
-  transition: 0.2s ease-out;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 .nav-item span:hover::before {
@@ -256,8 +256,8 @@ nav.navbar .line {
           transform: scale(1.2);
   -webkit-transform-origin: 0 0;
           transform-origin: 0 0;
-  -webkit-transition: 0.3s ease-out;
-  transition: 0.3s ease-out;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
 .logo a {
@@ -288,8 +288,38 @@ nav.navbar .line {
   left: 0;
   bottom: 0;
   right: 0;
-  -webkit-transition: 0.3s ease-out;
-  transition: 0.3s ease-out;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.modal .modal__close-btn {
+  border-radius: 50%;
+  padding: .8rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  right: 2.5rem;
+  top: 2.5rem;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  display: none;
+  cursor: pointer;
+  z-index: 1005;
+}
+
+.modal .modal__close-btn:hover {
+  background-color: #3A3A1F;
+}
+
+.modal .modal__close-btn:hover polyline {
+  stroke: #fff !important;
 }
 
 .modal .layer {
@@ -297,8 +327,8 @@ nav.navbar .line {
   inset: 0;
   opacity: 0;
   background-color: #000;
-  -webkit-transition: 0.3s ease-out;
-  transition: 0.3s ease-out;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
 .modal.show {
@@ -324,6 +354,13 @@ nav.navbar .line {
   background-color: #fff;
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+.modal .sidebar.active {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
 }
 
 .modal .sidebar .nav-list {
@@ -353,14 +390,9 @@ nav.navbar .line {
   padding: 2.3rem 2.5rem;
   border-right: 0.1rem solid #3A3A1F;
   background-color: #fff;
-  -webkit-transition: 1s ease-out;
-  transition: 1s ease-out;
-}
-
-.modal .modal-element.active {
-  opacity: 1;
-  -webkit-transform: translateX(0);
-          transform: translateX(0);
+  position: relative;
+  -webkit-transition: 0.8s ease-in-out;
+  transition: 0.8s ease-in-out;
 }
 
 .modal .modal-element:nth-child(3) {
@@ -385,9 +417,15 @@ nav.navbar .line {
   opacity: 0;
 }
 
+.modal .modal-element.active {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
 .modal .modal-element .modal__navi * {
-  -webkit-transition: 0.5s ease-out;
-  transition: 0.5s ease-out;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
   font-weight: 600;
 }
 
@@ -397,15 +435,15 @@ nav.navbar .line {
   border-top: 0.1rem solid grey;
   padding: 1rem 0;
   font-size: 1.5rem;
-  -webkit-transition: 0.25s ease-out;
-  transition: 0.25s ease-out;
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
 }
 
 .modal .modal-element .modal__navi li a {
   display: block;
   color: grey;
-  -webkit-transition: 0.25s ease-out;
-  transition: 0.25s ease-out;
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
 }
 
 .modal .modal-element .modal__navi li a > div {
@@ -587,8 +625,8 @@ nav.navbar .line {
   text-transform: uppercase;
   color: grey;
   font-weight: 600;
-  -webkit-transition: 0.25s ease-out;
-  transition: 0.25s ease-out;
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
 }
 
 #products .products-des button:hover {
@@ -610,8 +648,8 @@ nav.navbar .line {
 #products .products-des .dropDownBtn {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
-  -webkit-transition: 0.25s ease-out;
-  transition: 0.25s ease-out;
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
 }
 
 #products .products-des .product-des-item__btn {
@@ -630,13 +668,13 @@ nav.navbar .line {
   height: 0;
   overflow: hidden;
   border: none;
-  -webkit-transition: 1s ease-out;
-  transition: 1s ease-out;
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
 }
 
 #products .products-des .product-des-item__list.active {
-  -webkit-transition: 1s ease-out;
-  transition: 1s ease-out;
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
   height: auto;
   border: 0.1rem solid #3A3A1F;
   border-color: grey;
@@ -648,8 +686,8 @@ nav.navbar .line {
   outline: none;
   text-align: left;
   color: grey;
-  -webkit-transition: 0.1s ease-out;
-  transition: 0.1s ease-out;
+  -webkit-transition: 0.1s ease-in-out;
+  transition: 0.1s ease-in-out;
 }
 
 #products .products-des .product-des-item__list button:hover {
@@ -679,8 +717,8 @@ nav.navbar .line {
   display: flex;
   padding: 2rem 0;
   border-bottom: 0.1rem solid grey;
-  -webkit-transition: 0.25s ease-out;
-  transition: 0.25s ease-out;
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
 }
 
 #products .products-list > div .product-item:hover {
@@ -866,8 +904,8 @@ footer .footer-column:not(:first-child) ul li {
 
 footer .footer-column:not(:first-child) ul li a:hover {
   border-bottom: 0.1rem solid #3A3A1F;
-  -webkit-transition: 0.25s ease-out;
-  transition: 0.25s ease-out;
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
 }
 
 footer .footer-column:not(:first-child) svg.lg-footer {

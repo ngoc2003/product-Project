@@ -37,7 +37,7 @@ $product-tite-size: 2rem;
     }
 }
 @mixin transition($time) {
-    transition: $time ease-out
+    transition: $time ease-in-out;
 }
 
 // $transition($time):$time ease-out;

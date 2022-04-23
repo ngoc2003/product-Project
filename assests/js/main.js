@@ -50,6 +50,33 @@ let defaultPadding = document.querySelector('.nav-list').style.padding;
 var modal = document.querySelector('.modal');
 var modalElements = document.querySelectorAll('.modal-element');
 var navBarNavigations = document.querySelectorAll('.navbar .nav-item span');
+var sidebar = document.querySelector('.sidebar');
+var closeBtns = document.querySelectorAll('.modal__close-btn');
+function hideContainer() {
+    modal.classList.remove('show');
+    sidebar.classList.remove('active');
+    for ( let i = modalElements.length; i>0; i--) {
+            modalElements[i-1].classList.remove('active');
+    }
+    sideBarNavigations.forEach( navi2 => { 
+        navi2.classList.remove('selected');
+    })
+
+}
+function showPanel(num) {
+    modalElements[num].classList.add('active');
+    closeBtns.forEach( (btn) => {       
+        btn.style.display = 'none';
+    })
+    for (let i = modalElements.length - 1; i>=0 ; i--) {
+        if (modalElements[i].classList.contains('active')) {
+            closeBtns[i].style.display = 'flex';
+            break;
+        }
+    }
+}
+
+
 navBarNavigations.forEach( (navi, index) => {
     navi.addEventListener('click', () => {
         navBarNavigations.forEach( navi2 => { 
@@ -59,6 +86,8 @@ navBarNavigations.forEach( (navi, index) => {
         if (index == 1 || index ==2 || index==0) {
             modal.classList.add('show');
             modalElements[0].classList.add('active');
+            sidebar.classList.add('active');
+            closeBtns[0].style.display = 'flex';
         }
         sideBarNavigations[index].classList.add('selected')
     })

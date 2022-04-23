@@ -184,6 +184,26 @@ nav.navbar{
     // z-index:4;
         // transform: translateX(-100%);
     @include transition(.3s);
+    .modal__close-btn{
+        border-radius: 50%;
+        padding:.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        right:2.5rem;
+        top:2.5rem;
+        @include transition(.3s);
+        display: none;
+        cursor: pointer;
+        z-index: 1005;
+        &:hover{
+            background-color: $fontColor;
+            polyline{
+                stroke:#fff !important;
+            }
+        }
+    }
     .layer{
         position: absolute;
         inset:0;
@@ -212,6 +232,12 @@ nav.navbar{
         z-index: 1005;
         background-color: #fff;
         transform: translateX(-100%);
+        @include transition(.5s);
+
+        &.active{
+            transform: translateX(0);
+
+        }
         .nav-list{
             padding-top:4rem;
             flex:1;
@@ -238,26 +264,28 @@ nav.navbar{
         // padding-right:2.5rem;
         border-right: $border--black;
         background-color: #fff;
-        // position: relative;
-        @include transition(1s);
+        position: relative;
+        @include transition(.8s);
         // transform: translateX(-100%);
-        &.active{
-            opacity: 1;
-            transform: translateX(0);
-        }
         &:nth-child(3){
             z-index:1004;
         transform: translateX(-200%);
+        // @include transition(1s);
+
 
         }
         &:nth-child(4){
+            // @include transition(.5s);
             z-index: 1003;
-        transform: translateX(-300%);
+            transform: translateX(-300%);
+            // @include transition(1s);
 
         }
         &:nth-child(5){
+            // @include transition(.5s);
             z-index: 1002;
-        transform: translateX(-400%);
+            transform: translateX(-400%);
+            // @include transition(1s);
 
         }
         &:nth-child(3),
@@ -266,8 +294,14 @@ nav.navbar{
         {
             opacity: 0;
             // transform: translateX(-100%);
-
         }
+        &.active{
+            opacity: 1;
+            transform: translateX(0);
+        }
+        // &.close-btn .modal__close-btn {
+        //     display: block;
+        // }
         .modal__navi {
             *{
                 @include transition(.5s);

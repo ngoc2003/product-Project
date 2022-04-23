@@ -44,7 +44,7 @@
     </nav>
     <!-- SIDEBAR-->
     <section class="modal">
-        <div class="layer">
+        <div class="layer" onclick = "hideContainer()">
             
         </div>
         <!-- NAV -->
@@ -99,26 +99,40 @@
             </div>
         </nav>
         <div class="modal-element">
+            <div class="modal__close-btn" onclick="hideContainer()">
+                <svg height="10px" width="10px">
+                    <polyline points="0,0 10,10" style="fill:none; stroke:black;stroke-width:1"></polyline>
+                    <polyline points="0,10 10,0" style="fill:none; stroke:black;stroke-width:1"></polyline>
+
+                </svg>
+            </div>
             <header>
                 <a href="" class="modal__title">See All</a>
             </header>
             <nav class="modal__navi">
                 <ul >
-                    <li><a href="#">Panels</a></li>
-                    <li><a href="#">Slats</a></li>
-                    <li><a href="#">Designer</a></li>
-                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#" onmouseover="showPanel(1)">Panels</a></li>
+                    <li><a href="#" onmouseover="showPanel(1)">Slats</a></li>
+                    <li><a href="#" onmouseover="showPanel(1)">Designer</a></li>
+                    <li><a href="#" onmouseover="showPanel(1)">Accessories</a></li>
                 </ul>
             </nav>
         </div>
 
         <div class="modal-element">
+            <div class="modal__close-btn" onclick="hideContainer()">
+                <svg height="10px" width="10px">
+                    <polyline points="0,0 10,10" style="fill:none; stroke:black;stroke-width:1"></polyline>
+                    <polyline points="0,10 10,0" style="fill:none; stroke:black;stroke-width:1"></polyline>
+
+                </svg>
+            </div>
             <header>
                 <a href="" class="modal__title">all designer</a>
             </header>
             <nav class="modal__navi">
                 <ul >
-                    <li><a href="#">
+                    <li><a href="#" onmouseover="showPanel(2)">
                         <div>   
                             <h4 class="modal__navi-item__title">DecorSlat</h4>
                             <span class="arrow">
@@ -139,7 +153,7 @@
                         </div>
                     </a></li>
                     
-                    <li><a href="#">
+                    <li><a href="#" onmouseover="showPanel(2)">
                         <div>   
                             <h4 class="modal__navi-item__title">DecorSlat Aluminium</h4>
                             <span class="arrow">
@@ -160,7 +174,7 @@
                         </div>
                     </a></li>
 
-                    <li><a href="#">
+                    <li><a href="#" onmouseover="showPanel(2)">
                         <div>   
                             <h4 class="modal__navi-item__title">DecorSlat Max</h4>
                             <span class="arrow">
@@ -185,6 +199,13 @@
         </div>
 
         <div class="modal-element">
+            <div class="modal__close-btn" onclick="hideContainer()">
+                <svg height="10px" width="10px">
+                    <polyline points="0,0 10,10" style="fill:none; stroke:black;stroke-width:1"></polyline>
+                    <polyline points="0,10 10,0" style="fill:none; stroke:black;stroke-width:1"></polyline>
+
+                </svg>
+            </div>
             <div>
                 <img src="./assests/img/item.png" alt="">
             </div>
