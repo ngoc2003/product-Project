@@ -1,4 +1,3 @@
-
 /* 
                     PRODUCTS
 */
@@ -6,7 +5,6 @@ function titleScroll() {
     let scrollValue = window.scrollY;
     productsDes.style.transform = `translateY(${scrollValue}px)`;
 }
-
 function navbarScroll() {
     let scrollY = this.scrollY;
     if (scrollY != 0) {
@@ -102,3 +100,16 @@ sideBarNavigations.forEach( navi => {
         navi.classList.add('selected');
     })
 })
+
+
+/*
+        API
+*/
+var apiUrl = `https://6266bd397863833642166644.mockapi.io/api/products`;
+fetch(apiUrl)
+    .then( response => {
+        return response.json();
+    })
+    .then( products => {
+        console.log(products);
+    })
