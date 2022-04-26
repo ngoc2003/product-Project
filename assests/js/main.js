@@ -105,6 +105,52 @@ sideBarNavigations.forEach( navi => {
 /*
         API
 */
+const productDesList = [
+    {
+        title: "category",
+        button_links: ["accesories","designer","panels","slats"]
+    },
+    {
+        title: "application",
+        button_links: ["internals","externals"]
+    },
+    {
+        title: "suitable for",
+        button_links:["ceilings","walls"]
+    },
+    {
+        title: "finish",
+        button_links:["other","raw","timber","laminate","timber veneer","polyurethane","smartlook"]
+    },
+    {
+        title:"fire substrate",
+        button_links:["metal","fire rated mdf","timber","plywood","mdf","fibre cement","plasterboard"]
+    }
+]
+var productsList = document.querySelector('.products-list div');
+var productsDesContainer = document.querySelector('.products-des-container');
+for (let i = 0; i<productDesList.length;i++) {
+    var htmls='';
+    for (let j =0; j<productDesList[i].button_links.length; j++) {
+        htmls += `
+        <button class="product-des-item__option">${productDesList[i].button_links[j]}</button>
+        `
+        console.log(htmls)
+    }
+    productsDesContainer.insertAdjacentHTML('beforeend',`
+        <div class="product-des-item">
+        <button class="product-des-item__btn" onclick="productMenuList(this)">
+            ${productDesList[i].title}
+            <svg class="dropDownBtn" height=6px width=10px>
+                <polyline points="0,0 5,6 10,0" style="fill:none; stroke:black;stroke-width:.5" />
+            </svg>
+        </button>
+        <div class="product-des-item__list">
+            ${htmls}
+        </div>
+
+    `);
+}
 var apiUrl = `https://6266bd397863833642166644.mockapi.io/api/products`;
 fetch(apiUrl)
     .then( response => {
