@@ -99,16 +99,57 @@ sideBarNavigations.forEach( navi => {
         })
         navi.classList.add('selected');
     })
+
 })
 
 
 /*
         API
 */
+function addProductItem(para,product) {
+    console.log(1)
+    productsList.insertAdjacentHTML('beforeend',`
+    <a href="" class="product-item">
+        <div class="product-item__img">
+            <img src="./assests/img/product1.webp" alt="">
+        </div>
+        <div class="product-item__content">
+            <div>
+                <h4 class="title">${product.title}</h4>
+                <p class="caption">${para}</p>
+            </div>
+            <div>
+                <div class="des">${product.soundprofile}</div>
+                <div class="des">|</div>
+                <div class="des">${product.combustible}</div>
+            </div>
+        </div>
+    </a>
+    `)
+}
+// let apiUrl = `https://6266bd397863833642166644.mockapi.io/api/products`;
+// let products = fetch(apiUrl).then(res=> res.json());   
+async function reloadProductsList (para) {
+    let apiUrl = `https://6266bd397863833642166644.mockapi.io/api/products`;
+    let products = await fetch(apiUrl).then(res=> res.json()); 
+    // console.log( products[0].categorize[0])  
+    productsList.innerHTML=``;
+    for( let index = 0; index< products.length; index++) {
+        let product = products[index];
+        // console.log(product.categorize)
+        
+        for ( let i = 0 ; i< product.categorize.length; i++) {
+            if (para == product.categorize[i]) {
+                console.log(product.title)
+                addProductItem(para,product)
+            }
+        }       
+    }
+}
 const productDesList = [
     {
         title: "category",
-        button_links: ["accesories","designer","panels","slats"]
+        button_links: ["accessories","designer","panels","slats"]
     },
     {
         title: "application",
@@ -130,12 +171,11 @@ const productDesList = [
 var productsList = document.querySelector('.products-list div');
 var productsDesContainer = document.querySelector('.products-des-container');
 for (let i = 0; i<productDesList.length;i++) {
-    var htmls='';
+    var htmls=``;
     for (let j =0; j<productDesList[i].button_links.length; j++) {
         htmls += `
-        <button class="product-des-item__option">${productDesList[i].button_links[j]}</button>
+        <button class="product-des-item__option" onclick="reloadProductsList('${productDesList[i].button_links[j]}')">${productDesList[i].button_links[j]}</button>
         `
-        console.log(htmls)
     }
     productsDesContainer.insertAdjacentHTML('beforeend',`
         <div class="product-des-item">
@@ -148,14 +188,5 @@ for (let i = 0; i<productDesList.length;i++) {
         <div class="product-des-item__list">
             ${htmls}
         </div>
-
     `);
 }
-var apiUrl = `https://6266bd397863833642166644.mockapi.io/api/products`;
-fetch(apiUrl)
-    .then( response => {
-        return response.json();
-    })
-    .then( products => {
-        console.log(products);
-    })
