@@ -169,6 +169,11 @@ body {
           animation: arrowAni .4s linear;
 }
 
+.btn:hover .btn__animate1 {
+  -webkit-animation: foreGroundAni .2s linear forwards;
+          animation: foreGroundAni .2s linear forwards;
+}
+
 .btn:hover .btn__animate2 {
   opacity: 1;
 }
