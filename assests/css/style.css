@@ -82,6 +82,7 @@ img {
 html {
   font-size: 62.5%;
   font-family: "Open Sans", sans-serif;
+  scroll-behavior: smooth;
 }
 
 html ::-webkit-scrollbar {
@@ -97,6 +98,12 @@ html ::-webkit-scrollbar-thumb {
 body {
   min-height: 150vh;
   position: relative;
+}
+
+.warningNoText {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  font-weight: 200;
 }
 
 .title {
@@ -699,6 +706,7 @@ nav.navbar .line {
   -ms-grid-column: 4;
   -ms-grid-column-span: 4;
   grid-column: 4/8;
+  position: relative;
 }
 
 #products .products-list > div {
@@ -717,8 +725,7 @@ nav.navbar .line {
   display: flex;
   padding: 2rem 0;
   border-bottom: 0.1rem solid grey;
-  -webkit-transition: 0.25s ease-in-out;
-  transition: 0.25s ease-in-out;
+  opacity: 1;
 }
 
 #products .products-list > div .product-item:hover {

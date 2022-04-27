@@ -1,6 +1,7 @@
 /* 
                     PRODUCTS
 */
+
 function titleScroll() {
     let scrollValue = window.scrollY;
     productsDes.style.transform = `translateY(${scrollValue}px)`;
@@ -39,7 +40,6 @@ window.onscroll = function () {
     titleScroll();
     navbarScroll();
 }
-
 
 /* 
                     NAVBAR AND SIDEBAR
@@ -106,17 +106,16 @@ sideBarNavigations.forEach( navi => {
 /*
         API
 */
-function addProductItem(para,product) {
-    console.log(1)
+function addProductItem(product) {
     productsList.insertAdjacentHTML('beforeend',`
-    <a href="" class="product-item">
+    <a href="" class="product-item" >
         <div class="product-item__img">
             <img src="./assests/img/product1.webp" alt="">
         </div>
         <div class="product-item__content">
             <div>
                 <h4 class="title">${product.title}</h4>
-                <p class="caption">${para}</p>
+                <p class="caption">${product.categorize[0]}</p>
             </div>
             <div>
                 <div class="des">${product.soundprofile}</div>
@@ -126,26 +125,29 @@ function addProductItem(para,product) {
         </div>
     </a>
     `)
-}
-// let apiUrl = `https://6266bd397863833642166644.mockapi.io/api/products`;
-// let products = fetch(apiUrl).then(res=> res.json());   
+} 
 async function reloadProductsList (para) {
+    let haveText=0;
     let apiUrl = `https://6266bd397863833642166644.mockapi.io/api/products`;
     let products = await fetch(apiUrl).then(res=> res.json()); 
-    // console.log( products[0].categorize[0])  
     productsList.innerHTML=``;
     for( let index = 0; index< products.length; index++) {
         let product = products[index];
-        // console.log(product.categorize)
         
         for ( let i = 0 ; i< product.categorize.length; i++) {
             if (para == product.categorize[i]) {
-                console.log(product.title)
-                addProductItem(para,product)
+                addProductItem(product);
+                haveText = 1;
+                break;
             }
         }       
     }
+    if (haveText == 0) {
+        productsList.innerHTML = `<h4 class="warningNoText">No Results</h4>`
+    }
+    
 }
+reloadProductsList('all');
 const productDesList = [
     {
         title: "category",
@@ -153,7 +155,7 @@ const productDesList = [
     },
     {
         title: "application",
-        button_links: ["internals","externals"]
+        button_links: ["internal","external"]
     },
     {
         title: "suitable for",
@@ -161,7 +163,7 @@ const productDesList = [
     },
     {
         title: "finish",
-        button_links:["other","raw","timber","laminate","timber veneer","polyurethane","smartlook"]
+        button_links:["other","raw","finish timber","laminate","timber veneer","polyurethane","smartlook"]
     },
     {
         title:"fire substrate",
@@ -190,3 +192,4 @@ for (let i = 0; i<productDesList.length;i++) {
         </div>
     `);
 }
+
