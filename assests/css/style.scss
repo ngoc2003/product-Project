@@ -27,6 +27,8 @@ html{
 body{
     min-height:150vh;
     position: relative;
+    // scroll-behavior: smooth;
+
     // display: none;
     // overflow: hidden;
 }
@@ -82,9 +84,9 @@ body{
         .arrow svg{
             animation: arrowAni .4s linear;
         }
-        .btn__animate1{
-            animation: foreGroundAni .2s linear forwards;
-        }
+        // .btn__animate1{
+        //     animation: foreGroundAni .2s linear forwards;
+        // }
         .btn__animate2{
             opacity: 1;
         }
@@ -177,19 +179,13 @@ nav.navbar{
 
 .modal{
     display: grid;
-    // display: none;
     grid-template-columns: repeat(7,1fr);
-    // gap:2.4rem;
-    // padding:0 2.5rem;
     position:fixed;
     top:0;
     left:0;
     bottom:0;
     right:0;
-    // background-color: #fff;
-    // z-index:1000 ;
-    // z-index:4;
-        // transform: translateX(-100%);
+
     @include transition(.3s);
     .modal__close-btn{
         border-radius: 50%;
@@ -487,6 +483,9 @@ nav.navbar{
                     color: $fontColor;
                     cursor: pointer;
                 }
+                &.active{
+                    color:$fontColor;
+                }
             }
         }
     }
@@ -498,6 +497,7 @@ nav.navbar{
             display: grid;
             grid-template-columns: repeat(4,1fr);
             column-gap: 2.5rem;
+            padding-right:2.5rem;
             .product-item{
                 grid-column: span 2;
                 display: flex;
@@ -556,7 +556,9 @@ footer{
     .footer-column {
         padding: 0 2.5rem;
         font-weight: 600;
-        // letter-spacing:0;
+        li{
+            cursor: pointer;
+        }
         &:nth-child(5),
         &:nth-child(6),
         &:nth-child(7),

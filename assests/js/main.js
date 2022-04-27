@@ -99,10 +99,7 @@ sideBarNavigations.forEach( navi => {
         })
         navi.classList.add('selected');
     })
-
 })
-
-
 /*
         API
 */
@@ -126,7 +123,26 @@ function addProductItem(product) {
     </a>
     `)
 } 
-async function reloadProductsList (para) {
+// window.scroll({
+//     top : pos,
+//     left : 0,
+//     behavior : 'smooth'
+// })
+function scrollToTopList() {
+    window.scroll({top:'0'})
+}
+// async function btnAnimation(btn,check) {
+//     if (check == 1) {
+//         btn.style.transform='translateY(-100%)';
+//         setTimeout( () => {
+//             btn.style.transform = 'translateY(100%)';
+//         },100);
+//         btn.style.transform ='translateY(0)';
+//     } else {
+//         btn.style.transform = 'translateY(-100%)';
+//     }
+// }
+async function reloadProductsList (para,btn) {
     let haveText=0;
     let apiUrl = `https://6266bd397863833642166644.mockapi.io/api/products`;
     let products = await fetch(apiUrl).then(res=> res.json()); 
@@ -142,10 +158,17 @@ async function reloadProductsList (para) {
             }
         }       
     }
+    let productOptions = document.querySelectorAll('.product-des-item__option');
+    productOptions.forEach( product => {
+        product.classList.remove('active');
+    });
+    btn.classList.add('active');
+    // console.log(btn)
+
+    scrollToTopList();
     if (haveText == 0) {
         productsList.innerHTML = `<h4 class="warningNoText">No Results</h4>`
     }
-    
 }
 reloadProductsList('all');
 const productDesList = [
@@ -172,11 +195,12 @@ const productDesList = [
 ]
 var productsList = document.querySelector('.products-list div');
 var productsDesContainer = document.querySelector('.products-des-container');
+
 for (let i = 0; i<productDesList.length;i++) {
     var htmls=``;
     for (let j =0; j<productDesList[i].button_links.length; j++) {
         htmls += `
-        <button class="product-des-item__option" onclick="reloadProductsList('${productDesList[i].button_links[j]}')">${productDesList[i].button_links[j]}</button>
+        <button class="product-des-item__option" onclick="reloadProductsList('${productDesList[i].button_links[j]}',this)">${productDesList[i].button_links[j]}</button>
         `
     }
     productsDesContainer.insertAdjacentHTML('beforeend',`

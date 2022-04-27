@@ -169,11 +169,6 @@ body {
           animation: arrowAni .4s linear;
 }
 
-.btn:hover .btn__animate1 {
-  -webkit-animation: foreGroundAni .2s linear forwards;
-          animation: foreGroundAni .2s linear forwards;
-}
-
 .btn:hover .btn__animate2 {
   opacity: 1;
 }
@@ -702,6 +697,10 @@ nav.navbar .line {
   cursor: pointer;
 }
 
+#products .products-des .product-des-item__list button.active {
+  color: #3A3A1F;
+}
+
 #products .products-list {
   -ms-grid-column: 4;
   -ms-grid-column-span: 4;
@@ -716,6 +715,7 @@ nav.navbar .line {
       grid-template-columns: repeat(4, 1fr);
   -webkit-column-gap: 2.5rem;
           column-gap: 2.5rem;
+  padding-right: 2.5rem;
 }
 
 #products .products-list > div .product-item {
@@ -798,6 +798,10 @@ footer .footer-container {
 footer .footer-column {
   padding: 0 2.5rem;
   font-weight: 600;
+}
+
+footer .footer-column li {
+  cursor: pointer;
 }
 
 footer .footer-column:nth-child(5), footer .footer-column:nth-child(6), footer .footer-column:nth-child(7), footer .footer-column:nth-child(8) {
