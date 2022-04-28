@@ -61,7 +61,7 @@ function hideContainer() {
     })
 
 }
-function showPanel(num) {
+function showPanel(num,item) {
     modalElements[num].classList.add('active');
     closeBtns.forEach( (btn) => {       
         btn.style.display = 'none';
@@ -72,6 +72,50 @@ function showPanel(num) {
             break;
         }
     }
+    if (num==1) {
+        let text = item.innerText.toLowerCase();
+        // console.log(text);
+        setTimeout( () => {
+            reloadProductsList (text,'',2);
+        },200);
+        // let maxHeight = document.documentElement.clientHeight;
+        
+    }
+
+    let maxHeight = document.documentElement.clientHeight - panel2.parentElement.firstElementChild.clientHeight;
+        
+        panel2.lastElementChild.offsetHeight > maxHeight ? panel2.lastElementChild.style =`
+            overflow-y:scroll;
+            max-height: ${maxHeight}px;
+        ` : panel2.lastElementChild.style = `overflow-y:hidden;`;
+}
+
+
+var panel1 =document.querySelector('.js-panel-1 .js-panel-1__content');
+var panel2 = document.querySelector('.js-panel-2 .js-panel-2__content');
+function showPanelSec1(num) {
+    if (num==1) {
+        let htmls=``;
+        for (let i = 0 ; i<productDesList[0].button_links.length;i++) {
+            htmls += `<li><a href="#" onmouseover="showPanel(1,this)">${productDesList[0].button_links[i]}</a></li>`
+        };
+        panel1.innerHTML =`
+        <header>
+            <a href="" class="modal__title">See All</a>
+        </header>
+        <nav class="modal__navi">
+            <ul >
+                ${htmls}
+            </ul>
+        </nav>
+        `;
+    } else if (num==0) {
+        panel1.innerHTML = `  
+        <h4 class="warningNoText">Sorry, pls choose PRODUCTS tab</h4>`;     
+    } 
+    // else if (num==2) {
+
+    // }
 }
 
 
@@ -81,7 +125,7 @@ navBarNavigations.forEach( (navi, index) => {
             navi2.classList.remove('selected');
         })
         navi.classList.add('selected');
-        if (index == 1 || index ==2 || index==0) {
+        if (index == 1||index==0||index==2) {
             modal.classList.add('show');
             modalElements[0].classList.add('active');
             sidebar.classList.add('active');
@@ -92,6 +136,7 @@ navBarNavigations.forEach( (navi, index) => {
 })
 
 var sideBarNavigations = document.querySelectorAll('.modal .nav-item span');
+
 sideBarNavigations.forEach( navi => {
     navi.addEventListener('click', () => {
         sideBarNavigations.forEach( navi2 => { 
@@ -123,51 +168,81 @@ function addProductItem(product) {
     </a>
     `)
 } 
-// window.scroll({
-//     top : pos,
-//     left : 0,
-//     behavior : 'smooth'
-// })
+
 function scrollToTopList() {
     window.scroll({top:'0'})
 }
-// async function btnAnimation(btn,check) {
-//     if (check == 1) {
-//         btn.style.transform='translateY(-100%)';
-//         setTimeout( () => {
-//             btn.style.transform = 'translateY(100%)';
-//         },100);
-//         btn.style.transform ='translateY(0)';
-//     } else {
-//         btn.style.transform = 'translateY(-100%)';
-//     }
-// }
-async function reloadProductsList (para,btn) {
+
+async function reloadProductsList (para,btn,modalCheck=0) {
     let haveText=0;
     let apiUrl = `https://6266bd397863833642166644.mockapi.io/api/products`;
     let products = await fetch(apiUrl).then(res=> res.json()); 
-    productsList.innerHTML=``;
-    for( let index = 0; index< products.length; index++) {
-        let product = products[index];
-        
-        for ( let i = 0 ; i< product.categorize.length; i++) {
-            if (para == product.categorize[i]) {
-                addProductItem(product);
-                haveText = 1;
-                break;
-            }
-        }       
+    if (modalCheck ==0) {
+        productsList.innerHTML=``;
+        for( let index = 0; index< products.length; index++) {
+            let product = products[index];
+            
+            for ( let i = 0 ; i< product.categorize.length; i++) {
+                if (para == product.categorize[i]) {
+                    addProductItem(product);
+                    haveText = 1;
+                    break;
+                }
+            }       
+        }
+        let productOptions = document.querySelectorAll('.product-des-item__option');
+        productOptions.forEach( product => {
+            product.classList.remove('active');
+        });
+        btn.classList.add('active');
+        scrollToTopList();
+        if (haveText == 0) {
+            productsList.innerHTML = `<h4 class="warningNoText">No Results</h4>`
+        }
     }
-    let productOptions = document.querySelectorAll('.product-des-item__option');
-    productOptions.forEach( product => {
-        product.classList.remove('active');
-    });
-    btn.classList.add('active');
-    // console.log(btn)
-
-    scrollToTopList();
-    if (haveText == 0) {
-        productsList.innerHTML = `<h4 class="warningNoText">No Results</h4>`
+    else if(modalCheck == 2) {
+        let htmls = ``;
+        for( let index = 0; index< products.length; index++) {
+            let product = products[index];
+            // console.log(product);
+            for ( let i = 0 ; i< product.categorize.length; i++) {
+                if (para == product.categorize[i]) {
+                    console.log(product.categorize[i]);
+                htmls += `
+                <li>
+                    <a href="#" onmouseover="showPanel(2)">
+                        <div>   
+                            <h4 class="modal__navi-item__title">${product.title}</h4>
+                            <span class="arrow">
+                                <svg class="arrowSvg" height=8px width=18px>
+                                    <polyline points="0,4 18,4 13,0 18,4 13,8 18,4 0,4" style="fill:none; stroke:grey;stroke-width:.5" />
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="modal__navi__des">
+                            <div>
+                                <h4 class="title">MATERIAL</h4>
+                                <p class="description">${product.material}</p>
+                            </div>
+                            <div>
+                                <h4 class="title">SOUND PROFile</h4>
+                                <p class="description">${product.soundprofile}</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>`
+                break;
+                }
+            }   
+        }
+        panel2.innerHTML = `
+        <header>
+            <a href="" class="modal__title">all designer</a>
+        </header>
+        <nav class="modal__navi">
+            ${htmls}
+        </nav>
+        `
     }
 }
 reloadProductsList('all');

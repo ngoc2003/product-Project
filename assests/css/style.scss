@@ -185,6 +185,8 @@ nav.navbar{
     left:0;
     bottom:0;
     right:0;
+    // height:100vh;
+    // overflow-y: hidden !important;
 
     @include transition(.3s);
     .modal__close-btn{
@@ -262,6 +264,7 @@ nav.navbar{
         border-right: $border--black;
         background-color: #fff;
         position: relative;
+        max-height: 100vh;
         @include transition(.8s);
         &:nth-child(3){
             z-index:1004;
@@ -286,12 +289,16 @@ nav.navbar{
             transform: translateX(0);
         }
         .modal__navi {
+            &::-webkit-scrollbar{
+                width: 0;
+            }
             *{
                 @include transition(.5s);
                 font-weight:600;
             }
             li{
                 list-style-type:none;
+                text-transform: capitalize;
                 border-bottom: $border--grey;
                 border-top: $border--grey;
                 padding:1rem 0;

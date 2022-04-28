@@ -398,6 +398,7 @@ nav.navbar .line {
   border-right: 0.1rem solid #3A3A1F;
   background-color: #fff;
   position: relative;
+  max-height: 100vh;
   -webkit-transition: 0.8s ease-in-out;
   transition: 0.8s ease-in-out;
 }
@@ -430,6 +431,10 @@ nav.navbar .line {
           transform: translateX(0);
 }
 
+.modal .modal-element .modal__navi::-webkit-scrollbar {
+  width: 0;
+}
+
 .modal .modal-element .modal__navi * {
   -webkit-transition: 0.5s ease-in-out;
   transition: 0.5s ease-in-out;
@@ -438,6 +443,7 @@ nav.navbar .line {
 
 .modal .modal-element .modal__navi li {
   list-style-type: none;
+  text-transform: capitalize;
   border-bottom: 0.1rem solid grey;
   border-top: 0.1rem solid grey;
   padding: 1rem 0;
