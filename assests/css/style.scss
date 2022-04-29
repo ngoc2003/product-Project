@@ -3,6 +3,11 @@
 img{
     width:100%
 }
+a{
+    cursor: pointer;
+    // display: flex;
+    // align-items: center;
+}
 *{
     padding:0;
     margin:0;
@@ -10,7 +15,22 @@ img{
     text-decoration: none;
     color: $fontColor;
 }
+.countItem{
 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width:2.5rem;
+    height:2.5rem;
+    border-radius: 50%;
+    background-color: transparent;
+    border: $border--grey;
+    color:$fontColorOpacity;
+    font-size:1rem;
+    position:relative;
+    // transform: translateY(-50%);
+    
+}
 html{
     font-size:62.5%;
     font-family: $fontPrimary;
@@ -31,6 +51,11 @@ body{
 
     // display: none;
     // overflow: hidden;
+}
+.middle{
+    display: inline-flex;
+    align-items: center;
+    gap:1rem;
 }
 .warningNoText{
     font-size:1.5rem;
@@ -303,10 +328,21 @@ nav.navbar{
                 border-top: $border--grey;
                 padding:1rem 0;
                 font-size:1.5rem;
+                // position:relative;
+                
                 @include transition(.25s);                
                 a{
                     display: block;
                     color: $fontColorOpacity;
+                    // display: flex;
+                    // justify-content: space-between;
+                    // position:relativ
+                    &.isCountItem{
+                        display: flex;
+
+                        justify-content: space-between;
+                        // position:relativ
+                    }
                     @include transition(.25s);
                     > div {
                         display: flex;
@@ -367,6 +403,10 @@ nav.navbar{
                     h4.title, p.description, h4.modal__navi-item__title{
                         color: $fontColor;
                     }
+                    .countItem{
+                        background-color:  $fontColor;
+                        color:#fff;
+                    }
                 }
             }
 
@@ -378,6 +418,10 @@ nav.navbar{
                 font-size: 2rem;
                 color: $fontColor;
                 text-transform: capitalize;
+                .countItem{
+                    color: $fontColor;
+                    border-color: $fontColor;
+                }
             }
         }
     }

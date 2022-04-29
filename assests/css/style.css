@@ -70,6 +70,10 @@ img {
   width: 100%;
 }
 
+a {
+  cursor: pointer;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -77,6 +81,26 @@ img {
           box-sizing: border-box;
   text-decoration: none;
   color: #3A3A1F;
+}
+
+.countItem {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 0.1rem solid grey;
+  color: grey;
+  font-size: 1rem;
+  position: relative;
 }
 
 html {
@@ -98,6 +122,16 @@ html ::-webkit-scrollbar-thumb {
 body {
   min-height: 150vh;
   position: relative;
+}
+
+.middle {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
 }
 
 .warningNoText {
@@ -459,6 +493,15 @@ nav.navbar .line {
   transition: 0.25s ease-in-out;
 }
 
+.modal .modal-element .modal__navi li a.isCountItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 .modal .modal-element .modal__navi li a > div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -538,6 +581,11 @@ nav.navbar .line {
   color: #3A3A1F;
 }
 
+.modal .modal-element .modal__navi li.hover .countItem {
+  background-color: #3A3A1F;
+  color: #fff;
+}
+
 .modal .modal-element header {
   padding-top: 6.5rem;
   padding-bottom: 6rem;
@@ -547,6 +595,11 @@ nav.navbar .line {
   font-size: 2rem;
   color: #3A3A1F;
   text-transform: capitalize;
+}
+
+.modal .modal-element header .modal__title .countItem {
+  color: #3A3A1F;
+  border-color: #3A3A1F;
 }
 
 .modal .modal-element:last-child {

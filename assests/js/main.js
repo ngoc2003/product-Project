@@ -77,9 +77,12 @@ function showPanel(num,item) {
     }
     if (num==1) {
         hidePanels(2);
-        let text = item.innerText.toLowerCase();
+
+        let text = item.innerText.toLowerCase().slice(0,-2).trim();
+
         setTimeout( () => {
             reloadProductsList (text,'',2);
+            // console.log(1);
         },200);
         
     }
@@ -119,28 +122,6 @@ function activePanel(item,num) {
     item.classList.add('hover');
 }
 
-function showPanelSec1(num) {
-    hidePanels(1);
-    if (num==1) {
-        let htmls=``;
-        for (let i = 0 ; i<productDesList[0].button_links.length;i++) {
-            htmls += `<li onmouseover='activePanel(this,0)'><a href="#" onmouseover="showPanel(1,this)">${productDesList[0].button_links[i]}</a></li>`
-        };
-        panel1.innerHTML =`
-        <header>
-            <a href="" class="modal__title">See All</a>
-        </header>
-        <nav class="modal__navi">
-            <ul >
-                ${htmls}
-            </ul>
-        </nav>
-        `;
-    } else if (num==0) {
-        panel1.innerHTML = `  
-        <h4 class="warningNoText">Sorry, pls choose PRODUCTS tab</h4>`;     
-    } 
-}
 
 
 navBarNavigations.forEach( (navi, index) => {
@@ -196,11 +177,11 @@ function addProductItem(product) {
 function scrollToTopList() {
     window.scroll({top:'0'})
 }
-
+// var countItem=0;
 async function reloadProductsList (para,btn,modalCheck=0) {
     let haveText=0;
     let apiUrl = `https://6266bd397863833642166644.mockapi.io/api/products`;
-    let products = await fetch(apiUrl).then(res=> res.json()); 
+    let products = await fetch(apiUrl).then(res=> res.json());
     if (modalCheck ==0) {
         productsList.innerHTML=``;
         for( let index = 0; index< products.length; index++) {
@@ -229,7 +210,9 @@ async function reloadProductsList (para,btn,modalCheck=0) {
         for( let index = 0; index< products.length; index++) {
             let product = products[index];
             for ( let i = 0 ; i< product.categorize.length; i++) {
+                console.log(para);
                 if (para == product.categorize[i]) {
+                    console.log(product.categorize[i]);
                 htmls += `
                 <li onmouseover='activePanel(this,1)'>
                     <a href="#" onmouseover="showPanel(2,this)">
@@ -252,20 +235,25 @@ async function reloadProductsList (para,btn,modalCheck=0) {
                             </div>
                         </div>
                     </a>
-                </li>`
+                </li>`;
+                console.log(htmls);
                 break;
                 }
             }   
         }
         panel2.innerHTML = `
         <header>
-            <a href="" class="modal__title">all designer</a>
+            <a class="modal__title" onclick="reloadProductsList('${para.toLowerCase()}');hideContainer()">all ${para}</a>
         </header>
         <nav class="modal__navi">
             ${htmls}
         </nav>
-        `
+        `;
     } 
+    if (modalCheck == -1) {
+        return await products;
+        // return data;
+    }
 }
 reloadProductsList('all');
 const productDesList = [
@@ -312,5 +300,50 @@ for (let i = 0; i<productDesList.length;i++) {
             ${htmls}
         </div>
     `);
+}
+
+function showPanelSec1(num) {
+    // var products;
+    // setTimeout( ()=> {
+        // let total =0;
+    if (num == 1) {
+        products = reloadProductsList ('','',-1);
+        // var count = 0;
+        products.then( (value) => {
+                if (num==1) {
+                    let htmls=``;
+                    for (let i = 0 ; i<productDesList[0].button_links.length;i++) {
+                        let count =0;
+                        for( let j = 0 ;j<value.length;j++) {
+                            if (value[j].categorize[0] == productDesList[0].button_links[i]) {
+                                count++;
+                            }
+                        };
+                        
+                        htmls += `<li onmouseover='activePanel(this,0)'><a  onmouseover="showPanel(1,this)" class="isCountItem middle">${productDesList[0].button_links[i]}<span class="countItem">${count>=10? count : '0'+count}</span></a>
+                        </li>`
+                    };
+                    panel1.innerHTML =`
+                    <header>
+                        <a  class="modal__title middle" onclick="reloadProductsList('all');hideContainer()">See All <span class="countItem">${value.length}</span></a>
+                    </header>
+                    <nav class="modal__navi">
+                        <ul >
+                            ${htmls}
+                        </ul>
+                    </nav>
+                    `;
+                } 
+                // console.log(1)
+            // }
+                // console.log(value[0].categorize[0])
+        });
+    }
+    hidePanels(1);
+    
+    if (num==0) {
+        panel1.innerHTML = `  
+        <h4 class="warningNoText">Sorry, pls choose PRODUCTS tab</h4>`;     
+    } 
 }
 
