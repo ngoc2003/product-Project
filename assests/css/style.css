@@ -511,30 +511,30 @@ nav.navbar .line {
   margin-top: -.1rem;
 }
 
-.modal .modal-element .modal__navi li:hover {
+.modal .modal-element .modal__navi li.hover {
   border-top: 0.1rem solid #3A3A1F;
   border-bottom: 0.1rem solid #3A3A1F;
   color: #3A3A1F;
 }
 
-.modal .modal-element .modal__navi li:hover .arrow {
+.modal .modal-element .modal__navi li.hover .arrow {
   background-color: #3A3A1F;
   border: none;
 }
 
-.modal .modal-element .modal__navi li:hover .arrow polyline {
+.modal .modal-element .modal__navi li.hover .arrow polyline {
   stroke: #fff !important;
 }
 
-.modal .modal-element .modal__navi li:hover + li {
+.modal .modal-element .modal__navi li.hover + li {
   border-top: 0.1rem solid #3A3A1F;
 }
 
-.modal .modal-element .modal__navi li:hover a {
+.modal .modal-element .modal__navi li.hover a {
   color: #3A3A1F;
 }
 
-.modal .modal-element .modal__navi li:hover h4.title, .modal .modal-element .modal__navi li:hover p.description, .modal .modal-element .modal__navi li:hover h4.modal__navi-item__title {
+.modal .modal-element .modal__navi li.hover h4.title, .modal .modal-element .modal__navi li.hover p.description, .modal .modal-element .modal__navi li.hover h4.modal__navi-item__title {
   color: #3A3A1F;
 }
 

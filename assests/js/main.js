@@ -50,12 +50,15 @@ var modalElements = document.querySelectorAll('.modal-element');
 var navBarNavigations = document.querySelectorAll('.navbar .nav-item span');
 var sidebar = document.querySelector('.sidebar');
 var closeBtns = document.querySelectorAll('.modal__close-btn');
+function hidePanels(num) {
+    for ( let i = modalElements.length; i>num; i--) {
+        modalElements[i-1].classList.remove('active');
+}
+}
 function hideContainer() {
     modal.classList.remove('show');
     sidebar.classList.remove('active');
-    for ( let i = modalElements.length; i>0; i--) {
-            modalElements[i-1].classList.remove('active');
-    }
+    hidePanels(0);
     sideBarNavigations.forEach( navi2 => { 
         navi2.classList.remove('selected');
     })
@@ -73,13 +76,22 @@ function showPanel(num,item) {
         }
     }
     if (num==1) {
+        hidePanels(2);
         let text = item.innerText.toLowerCase();
-        // console.log(text);
         setTimeout( () => {
             reloadProductsList (text,'',2);
         },200);
-        // let maxHeight = document.documentElement.clientHeight;
         
+    }
+    if(num==2) {
+        console.log(item)
+        let text = item.firstElementChild.firstElementChild.innerText;
+        panel3.innerHTML = `
+        <div>
+            <h4 class="modal__title">${text}</h4>
+            <p class="description">Lorem ipsum dolor sit amet.</p>
+        </div>
+        `
     }
 
     let maxHeight = document.documentElement.clientHeight - panel2.parentElement.firstElementChild.clientHeight;
@@ -93,11 +105,26 @@ function showPanel(num,item) {
 
 var panel1 =document.querySelector('.js-panel-1 .js-panel-1__content');
 var panel2 = document.querySelector('.js-panel-2 .js-panel-2__content');
+var panel3 = document.querySelector('.js-panel-3__content > div');
+function activePanel(item,num) {
+    if (num==0) {
+        var panelLiItems = document.querySelectorAll('.js-panel-1 .modal__navi li');
+        
+    } else if (num == 1) {
+        var panelLiItems = document.querySelectorAll('.js-panel-2 .modal__navi li');
+    }
+    panelLiItems.forEach(itemTemp => {
+        itemTemp.classList.remove('hover');
+    });
+    item.classList.add('hover');
+}
+
 function showPanelSec1(num) {
+    hidePanels(1);
     if (num==1) {
         let htmls=``;
         for (let i = 0 ; i<productDesList[0].button_links.length;i++) {
-            htmls += `<li><a href="#" onmouseover="showPanel(1,this)">${productDesList[0].button_links[i]}</a></li>`
+            htmls += `<li onmouseover='activePanel(this,0)'><a href="#" onmouseover="showPanel(1,this)">${productDesList[0].button_links[i]}</a></li>`
         };
         panel1.innerHTML =`
         <header>
@@ -113,9 +140,6 @@ function showPanelSec1(num) {
         panel1.innerHTML = `  
         <h4 class="warningNoText">Sorry, pls choose PRODUCTS tab</h4>`;     
     } 
-    // else if (num==2) {
-
-    // }
 }
 
 
@@ -204,13 +228,11 @@ async function reloadProductsList (para,btn,modalCheck=0) {
         let htmls = ``;
         for( let index = 0; index< products.length; index++) {
             let product = products[index];
-            // console.log(product);
             for ( let i = 0 ; i< product.categorize.length; i++) {
                 if (para == product.categorize[i]) {
-                    console.log(product.categorize[i]);
                 htmls += `
-                <li>
-                    <a href="#" onmouseover="showPanel(2)">
+                <li onmouseover='activePanel(this,1)'>
+                    <a href="#" onmouseover="showPanel(2,this)">
                         <div>   
                             <h4 class="modal__navi-item__title">${product.title}</h4>
                             <span class="arrow">
@@ -243,7 +265,7 @@ async function reloadProductsList (para,btn,modalCheck=0) {
             ${htmls}
         </nav>
         `
-    }
+    } 
 }
 reloadProductsList('all');
 const productDesList = [
