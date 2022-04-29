@@ -82,7 +82,6 @@ function showPanel(num,item) {
 
         setTimeout( () => {
             reloadProductsList (text,'',2);
-            // console.log(1);
         },200);
         
     }
@@ -122,11 +121,12 @@ function activePanel(item,num) {
     item.classList.add('hover');
 }
 
-
-
 navBarNavigations.forEach( (navi, index) => {
     navi.addEventListener('click', () => {
         navBarNavigations.forEach( navi2 => { 
+            navi2.classList.remove('selected');
+        })
+        sideBarNavigations.forEach( navi2 => { 
             navi2.classList.remove('selected');
         })
         navi.classList.add('selected');
@@ -177,7 +177,6 @@ function addProductItem(product) {
 function scrollToTopList() {
     window.scroll({top:'0'})
 }
-// var countItem=0;
 async function reloadProductsList (para,btn,modalCheck=0) {
     let haveText=0;
     let apiUrl = `https://6266bd397863833642166644.mockapi.io/api/products`;
@@ -252,7 +251,6 @@ async function reloadProductsList (para,btn,modalCheck=0) {
     } 
     if (modalCheck == -1) {
         return await products;
-        // return data;
     }
 }
 reloadProductsList('all');
@@ -303,12 +301,8 @@ for (let i = 0; i<productDesList.length;i++) {
 }
 
 function showPanelSec1(num) {
-    // var products;
-    // setTimeout( ()=> {
-        // let total =0;
     if (num == 1) {
         products = reloadProductsList ('','',-1);
-        // var count = 0;
         products.then( (value) => {
                 if (num==1) {
                     let htmls=``;
@@ -334,9 +328,6 @@ function showPanelSec1(num) {
                     </nav>
                     `;
                 } 
-                // console.log(1)
-            // }
-                // console.log(value[0].categorize[0])
         });
     }
     hidePanels(1);
