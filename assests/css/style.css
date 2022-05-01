@@ -83,6 +83,22 @@ a {
   color: #3A3A1F;
 }
 
+.lineHorizoneDad {
+  position: relative;
+}
+
+.lineHorizoneDad .lineHorizone {
+  position: absolute;
+  right: -2.5rem;
+  top: -2.5rem;
+  width: .1rem;
+  height: 0;
+  background-color: #3A3A1F;
+  display: block;
+  -webkit-transition: 4s ease-in-out;
+  transition: 4s ease-in-out;
+}
+
 .countItem {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -849,6 +865,7 @@ footer {
   z-index: 997;
   padding: 2.5rem 0;
   border-top: 0.1rem solid #3A3A1F;
+  overflow: hidden;
 }
 
 footer .footer-container {

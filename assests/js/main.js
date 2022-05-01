@@ -2,6 +2,14 @@
                     PRODUCTS
 */
 
+var lines= document.querySelectorAll('.lineHorizone');
+lines.forEach(line => {
+    changeHeightLine(line);
+})
+function changeHeightLine(line) { 
+    let heightLine =  document.documentElement.clientHeight*2;
+    line.style.height = `${heightLine}px`;
+}
 function titleScroll() {
     let scrollValue = window.scrollY;
     productsDes.style.transform = `translateY(${scrollValue}px)`;
@@ -33,7 +41,6 @@ function productMenuList(btn) {
         btn.lastElementChild.style.transform = 'rotate(0)';
     }
 }
-
 var windowHeight = window.innerHeight;
 var productsDes = document.querySelector('.products-des');
 window.onscroll = function () {
@@ -206,12 +213,14 @@ async function reloadProductsList (para,btn,modalCheck=0) {
     }
     else if(modalCheck == 2) {
         let htmls = ``;
+        let count = 0;
         for( let index = 0; index< products.length; index++) {
             let product = products[index];
             for ( let i = 0 ; i< product.categorize.length; i++) {
                 console.log(para);
                 if (para == product.categorize[i]) {
-                    console.log(product.categorize[i]);
+                    // console.log(product.categorize[i]);
+                    count++;
                 htmls += `
                 <li onmouseover='activePanel(this,1)'>
                     <a href="#" onmouseover="showPanel(2,this)">
@@ -242,7 +251,7 @@ async function reloadProductsList (para,btn,modalCheck=0) {
         }
         panel2.innerHTML = `
         <header>
-            <a class="modal__title" onclick="reloadProductsList('${para.toLowerCase()}');hideContainer()">all ${para}</a>
+            <a class="modal__title  middle" onclick="reloadProductsList('${para.toLowerCase()}');hideContainer()">all ${para}<span class="countItem">${count>=10? count : '0'+count}</span></a>
         </header>
         <nav class="modal__navi">
             ${htmls}
