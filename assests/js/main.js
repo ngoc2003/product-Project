@@ -180,7 +180,6 @@ function addProductItem(product) {
 
 function scrollToTopList() {
     window.scroll({top:'0'});
-    // hideContainer();
 }
 async function reloadProductsList (para,btn,modalCheck=0) {
     let haveText=0;
@@ -217,8 +216,7 @@ async function reloadProductsList (para,btn,modalCheck=0) {
             for ( let i = 0 ; i< product.categorize.length; i++) {
                 console.log(para);
                 if (para == product.categorize[i]) {
-                    // console.log(product.categorize[i]);
-                    count++;
+                count++;
                 htmls += `
                 <li onmouseover='activePanel(this,1)'>
                     <a href="#" onmouseover="showPanel(2,this)">
@@ -343,4 +341,3 @@ function showPanelSec1(num) {
         <h4 class="warningNoText">Sorry, pls choose PRODUCTS tab</h4>`;     
     } 
 }
-
