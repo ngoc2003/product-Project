@@ -273,10 +273,11 @@ nav.navbar{
         z-index: 1005;
         background-color: #fff;
         transform: translateX(-100%);
-        @include transition(.5s);
+        // @include transition(.5s);
 
         &.active{
             transform: translateX(0);
+        @include transition(.5s);
 
         }
         .nav-list{
@@ -306,7 +307,7 @@ nav.navbar{
         background-color: #fff;
         position: relative;
         max-height: 100vh;
-        @include transition(.8s);
+        // @include transition(.8s);
         &:nth-child(3){
             z-index:1004;
         transform: translateX(-200%);
@@ -328,6 +329,7 @@ nav.navbar{
         &.active{
             opacity: 1;
             transform: translateX(0);
+            @include transition(.8s);
         }
         .modal__navi {
             &::-webkit-scrollbar{

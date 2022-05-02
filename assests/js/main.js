@@ -1,14 +1,13 @@
 /* 
                     PRODUCTS
 */
-
-var lines= document.querySelectorAll('.lineHorizone');
-lines.forEach(line => {
-    changeHeightLine(line);
-})
-function changeHeightLine(line) { 
-    let heightLine =  document.documentElement.clientHeight*2;
-    line.style.height = `${heightLine}px`;
+scaleLine()
+function scaleLine() {
+    var lines= document.querySelectorAll('.lineHorizone');
+    lines.forEach(line => {
+        let heightLine =  document.documentElement.clientHeight*2;
+        line.style.height = `${heightLine}px`;
+    })
 }
 function titleScroll() {
     let scrollValue = window.scrollY;
@@ -102,7 +101,6 @@ function showPanel(num,item) {
         </div>
         `
     }
-
     let maxHeight = document.documentElement.clientHeight - panel2.parentElement.firstElementChild.clientHeight;
         
         panel2.lastElementChild.offsetHeight > maxHeight ? panel2.lastElementChild.style =`
@@ -110,7 +108,6 @@ function showPanel(num,item) {
             max-height: ${maxHeight}px;
         ` : panel2.lastElementChild.style = `overflow-y:hidden;`;
 }
-
 
 var panel1 =document.querySelector('.js-panel-1 .js-panel-1__content');
 var panel2 = document.querySelector('.js-panel-2 .js-panel-2__content');
@@ -182,7 +179,8 @@ function addProductItem(product) {
 } 
 
 function scrollToTopList() {
-    window.scroll({top:'0'})
+    window.scroll({top:'0'});
+    // hideContainer();
 }
 async function reloadProductsList (para,btn,modalCheck=0) {
     let haveText=0;
@@ -244,7 +242,6 @@ async function reloadProductsList (para,btn,modalCheck=0) {
                         </div>
                     </a>
                 </li>`;
-                console.log(htmls);
                 break;
                 }
             }   
@@ -323,7 +320,7 @@ function showPanelSec1(num) {
                             }
                         };
                         
-                        htmls += `<li onmouseover='activePanel(this,0)'><a  onmouseover="showPanel(1,this)" class="isCountItem middle">${productDesList[0].button_links[i]}<span class="countItem">${count>=10? count : '0'+count}</span></a>
+                        htmls += `<li onclick="reloadProductsList('${productDesList[0].button_links[i]}'),hideContainer()" onmouseover='activePanel(this,0)'><a  onmouseover="showPanel(1,this)" class="isCountItem middle">${productDesList[0].button_links[i]}<span class="countItem">${count>=10? count : '0'+count}</span></a>
                         </li>`
                     };
                     panel1.innerHTML =`
