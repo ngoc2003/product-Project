@@ -625,10 +625,8 @@ footer{
         gap:2.5rem;
     }
     .footer-column {
-        // margin:0 2.5rem;
         padding: 0 2.5rem;
         font-weight: 600;
-        // overflow: hidden;
         li{
             cursor: pointer;
         }
@@ -720,6 +718,7 @@ footer{
             font-size: 1rem;
             color: $fontColorOpacity;
             padding-bottom:1.5rem;
+            display: inline-block;
         }
         ul{
             list-style-type: none;

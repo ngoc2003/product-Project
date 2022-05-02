@@ -998,6 +998,7 @@ footer .footer-column:not(:first-child) .title {
   font-size: 1rem;
   color: grey;
   padding-bottom: 1.5rem;
+  display: inline-block;
 }
 
 footer .footer-column:not(:first-child) ul {
