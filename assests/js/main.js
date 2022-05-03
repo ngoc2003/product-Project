@@ -112,11 +112,16 @@ function showPanel(num,item) {
 var panel1 =document.querySelector('.js-panel-1 .js-panel-1__content');
 var panel2 = document.querySelector('.js-panel-2 .js-panel-2__content');
 var panel3 = document.querySelector('.js-panel-3__content > div');
+
+// xử lí kích hoạt Panel Modal
 function activePanel(item,num) {
+    //trang See ALL
     if (num==0) {
         var panelLiItems = document.querySelectorAll('.js-panel-1 .modal__navi li');
         
-    } else if (num == 1) {
+    } 
+    //trang See catagorize
+    else if (num == 1) {
         var panelLiItems = document.querySelectorAll('.js-panel-2 .modal__navi li');
     }
     panelLiItems.forEach(itemTemp => {
@@ -125,6 +130,7 @@ function activePanel(item,num) {
     item.classList.add('hover');
 }
 
+// xử lí animate nút điều hướng của navbar
 navBarNavigations.forEach( (navi, index) => {
     navi.addEventListener('click', () => {
         navBarNavigations.forEach( navi2 => { 
@@ -146,6 +152,7 @@ navBarNavigations.forEach( (navi, index) => {
 
 var sideBarNavigations = document.querySelectorAll('.modal .nav-item span');
 
+// xử lí animate nút điều hướng của sidebar
 sideBarNavigations.forEach( navi => {
     navi.addEventListener('click', () => {
         sideBarNavigations.forEach( navi2 => { 
@@ -157,6 +164,7 @@ sideBarNavigations.forEach( navi => {
 /*
         API
 */
+// xử lí xuất sản phẩm
 function addProductItem(product) {
     productsList.insertAdjacentHTML('beforeend',`
     <a href="" class="product-item" >
@@ -177,10 +185,15 @@ function addProductItem(product) {
     </a>
     `)
 } 
+//
 
+// xử lí lên đầu list
 function scrollToTopList() {
     window.scroll({top:'0'});
 }
+//
+
+//reload lại khi chọn mục sản phẩm
 async function reloadProductsList (para,btn,modalCheck=0) {
     let haveText=0;
     let apiUrl = `https://6266bd397863833642166644.mockapi.io/api/products`;
