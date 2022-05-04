@@ -1,3 +1,11 @@
+var body = document.querySelector('body');
+body.display = 'none';
+if (document.documentElement.clientWidth < 1024) {
+    body.style.display = 'none';
+    document.write('Web này chỉ hoạt động trên laptop có min width == 1024px')
+} else {
+    body.style.display = 'block';
+}
 /* 
                     PRODUCTS
 */
